@@ -1,0 +1,34 @@
+.notes_page .notes_header {
+    padding: 20px;
+    display: flex;
+    font-size: 1.5rem;
+    font-weight: 900;
+    justify-content: space-between;
+}
+
+#search_note {
+    width: 300px !important;
+    margin-left: 20px;
+}
+
+.add_button i {
+    margin: 0;
+}
+
+.add_button {
+    padding: 5px;
+    width: 30px;
+    height: 20px;
+    font-size: 1.5rem;
+    background-color: var(--orange);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notes_container {
+    display: flex;
+    justify-content: center;
+    flex-flow: wrap;
+}

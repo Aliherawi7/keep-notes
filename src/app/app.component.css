@@ -1,0 +1,11 @@
+.component_container {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 180px;
+    top: 0;
+    background-color: #fff;
+    display: flex;
+    overflow-y: scroll;
+    box-sizing: border-box;
+}

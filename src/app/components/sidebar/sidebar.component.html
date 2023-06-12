@@ -1,0 +1,21 @@
+<div class="sidebar_container">
+    <nav class="navigation">
+        <div class="brand_name">
+            <img routerLink="/" class="brand_img" src="../../assets/header/keep-notes-logo.png" />
+            <h1 routerLink="/"><strong>Keep</strong> <strong> Notes</strong></h1>
+        </div>
+        <ul>
+            <li routerLink="/" [ngClass]="{'active': number == 0}" (click)="setActive(0)"><i
+                    class="bi bi-house-fill"></i>Home</li>
+            <li routerLink="/notes" [ngClass]="{'active': number == 1}" (click)="setActive(1)"><i
+                    class="bi bi-stickies-fill"></i>Notes</li>
+            <li routerLink="/micro1" [ngClass]="{'active': number == 2}" (click)="setActive(2)"><i
+                    class="bi bi-bell-fill"></i>Notification</li>
+            <li routerLink="/micro2" [ngClass]="{'active': number == 3}" (click)="setActive(3)"><i
+                    class="bi bi-trash-fill"></i>Trash</li>
+            <li routerLink="/test" [ngClass]="{'active': number == 4}" (click)="setActive(4)">
+                <i class="bi bi-gear-fill"></i>Settings
+            </li>
+        </ul>
+    </nav>
+</div>

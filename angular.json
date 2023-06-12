@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "my-first-project": {
+    "Keep-Notes": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/my-first-project",
+            "outputPath": "dist/Keep-Notes",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "my-first-project:build:production"
+              "browserTarget": "Keep-Notes:build:production"
             },
             "development": {
-              "browserTarget": "my-first-project:build:development"
+              "browserTarget": "Keep-Notes:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "my-first-project:build"
+            "browserTarget": "Keep-Notes:build"
           }
         },
         "test": {
@@ -94,5 +94,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "2155a424-c145-4b46-a684-f4293cb73dcd"
   }
 }

@@ -1,0 +1,48 @@
+.note_editor_header {
+    justify-content: space-between;
+    padding: 20px;
+    font-size: 1.5rem;
+    font-weight: 900;
+}
+
+.note_editor_container {
+    background-color: #fff;
+}
+
+#note_title {
+    font-size: 20px;
+}
+
+.tools {
+    display: flex;
+    font-size: 18px;
+}
+
+.tools li {
+    border-radius: 2px;
+    padding: 3px;
+    background-color: #ddd;
+    margin: 4px;
+    text-align: center;
+    color: var(--i);
+    transition: all 0.2s ease;
+}
+
+.tools li i {
+    margin-left: 10px;
+}
+
+.tools li:hover {
+    box-shadow: 0 0 1px 2px #ddd;
+}
+
+textarea {
+    background-color: #ddd;
+    font-size: 14px;
+    padding: 20px;
+    height: 300px;
+}
+
+.btn_container {
+    display: flex;
+}

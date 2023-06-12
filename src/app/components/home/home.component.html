@@ -1,0 +1,43 @@
+<div class="home full_width fade_in">
+    <div class="home_header">
+        <div class="message_container">
+            <h2 class="welcome_message">{{message}}</h2>
+            <p class="date_time">{{dateMessage}}</p>
+        </div>
+    </div>
+    <div class="quick_section">
+        <div class="box quick_tips right-to-left">
+            <div class="box_header"><i class="bi bi-lightning-fill"></i>Quick Tips</div>
+            <div class="box_body">
+                <div class="box draw_your_note">
+                    <div class="box_header">
+                        <p class="box_title"><i class="bi bi-brush-fill"></i>Draw Your Note</p>
+                        <p class="box_description">Everything is could be happening</p>
+                    </div>
+                </div>
+                <div class="box plan_project">
+                    <div class="box_header">
+                        <p class="box_title"><i class="bi bi-journal-bookmark-fill"></i>Plan Your Project</p>
+                        <p class="box_description">Easier to plan your projects</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="box quick_note  left-to-right">
+            <div class="box_header"><i class="bi bi-pin-angle-fill"></i>Quick Notes</div>
+            <div class="box_input">
+                <textarea>notes: write down your notes here</textarea>
+            </div>
+        </div>
+    </div>
+    <div class="recent_notes box">
+        <div class="box_header">
+            <i class="bi bi-journal-bookmark-fill"></i>Recent
+        </div>
+        <div class="container">
+            <app-note *ngFor="let item of recentNotes" color={{item.color}} text={{item.text}} title={{item.title}}
+                date={{item.date}} [id]="item.id"></app-note>
+        </div>
+    </div>
+</div>

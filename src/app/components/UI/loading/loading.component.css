@@ -1,0 +1,33 @@
+.loading_wrapper {
+    display: block;
+    text-align: center;
+    min-height: 100px;
+}
+
+.loading {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+}
+
+.loading:after {
+    content: " ";
+    display: block;
+    width: 40px;
+    height: 40px;
+    margin: 4px;
+    border-radius: 50%;
+    border: 5px solid var(--orange);
+    border-color: var(--orange) transparent var(--orange) transparent;
+    animation: spinner 1.2s linear infinite;
+}
+
+@keyframes spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

@@ -1,0 +1,102 @@
+.home .home_header {
+    height: 260px;
+    background-image: url('../../../assets/images/home-header.jpg');
+    background-position: top;
+    background-size: cover;
+}
+
+.home .home_header .message_container {
+    margin-left: 2rem;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+.home .home_header h2 {
+    padding-top: 4rem;
+    font-size: 1.2rem;
+    font-weight: 900;
+}
+
+.home .home_header .date_time {
+    font-size: .8rem;
+}
+
+.box {
+    background-color: #fff;
+}
+
+.quick_section {
+    display: flex;
+    width: calc(100vw - 220px);
+    margin: 0 20px;
+    margin-top: -100px;
+    box-sizing: border-box;
+}
+
+.quick_section .quick_tips {
+    height: 160px;
+    flex: 2;
+}
+
+.quick_note {
+    padding-right: 0;
+    height: 160px;
+    flex: 1;
+
+}
+
+.box .box_header .box_title {
+    font-size: .8rem;
+    font-weight: 900;
+}
+
+.box .box_description {
+    font-size: 0.6rem;
+}
+
+.quick_note .box_input {
+    margin-top: 10px;
+    padding: 4px;
+}
+
+.box_input textarea {
+    height: 130px;
+    resize: none;
+    overflow-y: scroll;
+}
+
+
+.recent_notes {
+    margin: 30px;
+    margin-top: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.box_header {
+    font-size: 1rem !important;
+    font-weight: 600;
+}
+
+.recent_notes .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    flex-flow: wrap;
+}
+
+.recent_notes .container .note {
+    width: 200px;
+}
+
+
+
+.recent_notes .container .note .note_date {
+    font-size: 0.6rem;
+}
+
+.recent_notes .container .note textarea {
+    margin-top: 20px;
+    font-size: 0.8rem;
+}

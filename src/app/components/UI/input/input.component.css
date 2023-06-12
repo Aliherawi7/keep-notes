@@ -1,0 +1,27 @@
+.input_container {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.input {
+    outline: none;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 5px 10px;
+    transition: all 0.2s ease-out;
+    margin: 5px;
+    width: 300px;
+    box-sizing: border-box;
+}
+
+.input:hover,
+.input:focus {
+    box-shadow: 0px 0px 2px 3px var(--orange);
+}
+
+.input_label {
+    margin: 5px;
+    font-size: 14px;
+    font-weight: 600;
+}

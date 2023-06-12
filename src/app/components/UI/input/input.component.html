@@ -1,0 +1,5 @@
+<div class="input_container">
+    <label class="input_label" [ngStyle]="{'color':color, 'font-size':fontSize}" for={{id}}> {{label}} </label>
+    <input id={{id}} name={{id}} [(ngModel)]="inputValue" class="input" placeholder={{placeholder}} type={{inputType}}
+        [ngStyle]="{'font-size':fontSize}" (ngModelChange)="inputValueChange.emit(inputValue)" />
+</div>

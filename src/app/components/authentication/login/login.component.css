@@ -1,0 +1,25 @@
+.login_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: 10000;
+    background-image: url("../../../../assets/images/rere.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #fff;
+}
+
+.brand_image img {
+    margin-top: -100px;
+    width: 140px;
+}
+
+.loginform {
+    width: 300px;
+}

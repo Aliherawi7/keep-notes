@@ -1,0 +1,25 @@
+#not_found {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 90%;
+    position: absolute;
+    height: 90%;
+}
+
+.info_logo {
+    font-size: 100px;
+    font-size: 10rem;
+    position: static;
+    color: var(--orange_light);
+}
+
+.message_container {
+    text-align: center;
+}
+
+.message_container h1 {
+    color: var(--orange);
+    font-size: 3rem;
+}

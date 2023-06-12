@@ -1,0 +1,17 @@
+<div class="notes_page full_width slideInLeft">
+    <div class="notes_header align_items_center">
+        <div class="search_bar flex align_items_center">
+            <div class="notes_title">Sticky Note</div>
+            <app-input id="search_note" inputType="text" placeholder="find your notes"></app-input>
+        </div>
+        <app-button [routerLink]="['/notes/add-note/']" icon="bi bi-plus-lg"></app-button>
+    </div>
+
+    <div class="notes_container">
+        <app-loading *ngIf="isLoaded"></app-loading>
+        <app-note *ngFor="let item of allNotes" color={{item.color}} text={{item.text}} title={{item.title}}
+            date={{item.date}} [id]="item.id"></app-note>
+    </div>
+
+
+</div>

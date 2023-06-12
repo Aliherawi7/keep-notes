@@ -1,0 +1,94 @@
+.note {
+    min-width: 200px;
+    min-height: 250px;
+    border-radius: 5px;
+    margin: 8px;
+    position: relative;
+}
+
+.note i {
+    margin-left: 0;
+}
+
+.note_date {
+    font-size: 0.6rem;
+}
+
+.note .note_header {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+
+.note .note_header .note_title_container {
+    line-height: 20px;
+}
+
+.note_title {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.note_settings .setting_icon {
+    cursor: pointer;
+    padding: 5px;
+    padding-right: 0;
+}
+
+.setting_icon:hover+.setting_menu {
+    transform: scaleY(1);
+}
+
+.note_settings .setting_menu {
+    border-radius: 5px;
+    width: 100px;
+    position: absolute;
+    background-color: #fff;
+    z-index: 100;
+    right: 0;
+    font-size: 0.8rem;
+    padding: 10px;
+    list-style: none;
+    transform: scaleY(0);
+    transition: all .2s ease-in-out;
+    transform-origin: top;
+    top: 30px;
+    right: 10px;
+}
+
+.note_settings .setting_menu li {
+    padding: 4px;
+}
+
+.note_settings .setting_menu li:hover {
+    font-weight: bold;
+    color: #fff;
+    background-color: var(--orange);
+    border-radius: 5px;
+}
+
+.note_settings .setting_menu:hover {
+    transform: scaleY(1);
+
+}
+
+
+.note textarea {
+    padding: 10px;
+    font-size: 0.8rem;
+    background-color: #ffffff85;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 50px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    resize: none;
+    overflow-y: scroll;
+
+}
