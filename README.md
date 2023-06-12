@@ -1,4 +1,6 @@
-# MyFirstProject
+# Keep Notes v 1.0
+
+simple keep notes app inspired by Google keep notes app
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.1.
 
