@@ -1,29 +1,21 @@
-# Keep Notes v 1.0
+Introduction to Keep Notes:
 
-simple keep notes app inspired by Google keep notes app
+Keep Notes is a simple note-taking application developed using Angular. Inspired by Google Keep, this application provides a clean and intuitive interface for users to create and manage their notes effectively. With features like real-time updates and easy customization, Keep Notes offers a seamless note-taking experience.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.1.
+Key Features:
 
-## Development server
+Create and Edit Notes: Users can easily create new notes, add titles, and write content. The application provides a rich text editor for formatting text, adding bullet points, and more.
+Categorize and Organize: Keep Notes allows users to categorize their notes using labels or tags. This helps in organizing and quickly finding specific notes based on different topics or themes.
+Real-time Updates: Any changes made to the notes are automatically saved and synchronized in real-time. Users can access their notes from multiple devices and always have the latest version available.
+Reminders and Notifications: Users can set reminders for important notes and receive notifications at specified times or dates. This feature ensures that users never miss any important tasks or deadlines.
+Archive and Delete: Keep Notes provides options to archive or delete notes. Archiving allows users to store important notes without cluttering the main view, while deletion permanently removes unwanted notes.
+Search and Filters: The application includes a powerful search functionality that allows users to quickly find specific notes based on keywords. Users can also apply filters to narrow down the notes based on labels, dates, or other criteria.
+Customization: Keep Notes offers customization options such as changing the color of notes, organizing notes in different layouts, and applying personalized themes to suit individual preferences.
+Getting Started:
+To start using Keep Notes, follow these steps:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Clone the repository: git clone https://github.com/Aliherawi7/keep-notes.git
+Install dependencies: Run npm install to install the necessary packages.
+Launch the development server: Run ng serve to start the application on http://localhost:4200.
+Open the application: Access the Keep Notes application in your web browser at http://localhost:4200.
+Whether you need a simple note-taking solution for personal use or want to enhance your productivity by organizing your thoughts and tasks efficiently, Keep Notes built with Angular provides a user-friendly and feature-rich platform. Feel free to explore the GitHub repository, contribute to the project, or report any issues you encounter.
