@@ -41,8 +41,8 @@ export class LoginComponent {
         this.firebaseService.getUserInfo(res.user.uid)
           .then(res => {
             const user: User = res.docs[0].data() as User
-            localStorage.setItem("name", user.name)
-            localStorage.setItem('lastName', user.lastName)
+            localStorage.setItem("keepNotesUserName", user.name)
+            localStorage.setItem('keepNotesLastName', user.lastName)
           })
         this.authService.setLoggedIn(true)
         this.router.navigate(['/']);

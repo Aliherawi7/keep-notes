@@ -29,8 +29,8 @@ export class SignupComponent {
       .then(res => {
         console.log(res)
         // if everything is ok then save the user information
-        localStorage.setItem("name", this.name)
-        localStorage.setItem('lastName', this.lastName)
+        localStorage.setItem("keepNotesUserName", this.name)
+        localStorage.setItem('keepNotesLastName', this.lastName)
         localStorage.setItem("accessToken", res.user.refreshToken)
         localStorage.setItem("refreshToken", res.user.refreshToken)
         localStorage.setItem("userId", res.user.uid);

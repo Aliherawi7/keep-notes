@@ -19,7 +19,7 @@ export class HomeComponent {
   allNotes?: NoteForUI[] = [];
 
   constructor(private timeService: TimeService, private firebaseService: FirebaseService) {
-    this.message = this.timeService.getTimeMessage() + ' ' + localStorage.getItem("name")
+    this.message = this.timeService.getTimeMessage() + ' ' + localStorage.getItem("keepNotesLastName")
     this.dateMessage = this.timeService.getTimeAndDateString();
   }
 
