@@ -1,10 +1,17 @@
 <div class="login_container">
     <div class="brand_image"><img src="../../../../assets/header/keep-notes-logo.png" alt=""></div>
+    <h2 id="login_page_title">Sign in</h2>
     <div class="loginform">
-        <app-input id="username" inputType="text" [(inputValue)]="username" placeholder="username" label="Username"
+        <app-input id="email" inputType="text" [(inputValue)]="email" placeholder="email" label="Email"
             color="#fff"></app-input>
+        <label *ngIf="emailErrorMessage" class="input_error_message">{{emailErrorMessage}}</label>
         <app-input id="password" inputType="password" [(inputValue)]="password" placeholder="password" label="Password"
             color="#fff"></app-input>
-        <app-button (btnClick)="login()" [id]="'login_submit'" [btnType]="['full_width']" text="Login"></app-button>
+        <label *ngIf="passwordErrorMessage" class="input_error_message">{{passwordErrorMessage}}</label>
+        <app-button (btnClick)="loginWithEmailAndPassword()" [id]="'login_submit'" [btnType]="['full_width']"
+            text="Login" [isLoading]="isLoading"></app-button>
+        <app-button (btnClick)="loginWithGoogle()" [id]="'login_submit'" [btnType]="['full_width']"
+            text="Login with Google"></app-button>
+        <a routerLink='/signup' class="link_to_switch_page">Don't you have account?</a>
     </div>
 </div>

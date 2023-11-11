@@ -12,7 +12,7 @@
     background-image: url("../../../../assets/images/rere.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    background-color: #fff;
+    background-color: #e485af;
 }
 
 .brand_image img {
@@ -22,4 +22,16 @@
 
 .loginform {
     width: 300px;
+}
+
+.link_to_switch_page {
+    color: #fff;
+    font-weight: 400;
+    text-align: center;
+    margin-left: 60px;
+}
+
+#login_page_title {
+    color: #fff;
+    font-size: 32px;
 }

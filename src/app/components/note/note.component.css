@@ -1,9 +1,11 @@
 .note {
     min-width: 200px;
+    max-width: 500px;
     min-height: 250px;
-    border-radius: 5px;
+    max-height: 400px;
     margin: 8px;
     position: relative;
+    overflow: hidden;
 }
 
 .note i {
@@ -21,7 +23,6 @@
 
 }
 
-
 .note .note_header .note_title_container {
     line-height: 20px;
 }
@@ -33,12 +34,17 @@
 
 .note_settings .setting_icon {
     cursor: pointer;
-    padding: 5px;
+    padding: 30px;
     padding-right: 0;
+    font-size: 18px;
+}
+
+.note_settings .setting_icon i {
+    margin-right: 0;
 }
 
 .setting_icon:hover+.setting_menu {
-    transform: scaleY(1);
+    transform: translateY(0px);
 }
 
 .note_settings .setting_menu {
@@ -51,11 +57,12 @@
     font-size: 0.8rem;
     padding: 10px;
     list-style: none;
-    transform: scaleY(0);
+    transform: translateY(-150px);
     transition: all .2s ease-in-out;
     transform-origin: top;
     top: 30px;
-    right: 10px;
+    right: 5px;
+    box-shadow: 0px 0px 4px 1px #9b9999;
 }
 
 .note_settings .setting_menu li {
@@ -70,7 +77,7 @@
 }
 
 .note_settings .setting_menu:hover {
-    transform: scaleY(1);
+    transform: translateY(0px);
 
 }
 
@@ -92,3 +99,12 @@
     overflow-y: scroll;
 
 }
+
+/* 
+transform-origin: left top;
+left: 707.797px;
+top: 265.781px;
+transform: scale(1);
+opacity: 1;
+
+*/

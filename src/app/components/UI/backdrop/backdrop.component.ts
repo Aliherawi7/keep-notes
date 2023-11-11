@@ -12,7 +12,8 @@ export class BackdropComponent {
 
   closeBackdrop() {
     this.onClick.emit();
-    this.show = false;
+    //this.show = false;
+    console.log("backdrop")
   }
 
 }

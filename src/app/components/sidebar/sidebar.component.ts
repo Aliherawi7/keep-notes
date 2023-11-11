@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Paths } from '../../constants/Paths';
+import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -11,7 +12,7 @@ export class SidebarComponent {
   route?: Router;
   number?: number;
 
-  constructor() {
+  constructor(private firebaseService: FirebaseService) {
     let path = window.location.pathname;
     console.log(path)
     if (path.includes(Paths.notes)) {
@@ -25,6 +26,11 @@ export class SidebarComponent {
 
   setActive(number: number) {
     this.number = number
+  }
+
+  logout() {
+    this.firebaseService.logOut()
+
   }
 
 

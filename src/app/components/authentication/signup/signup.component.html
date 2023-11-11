@@ -1,1 +1,19 @@
-<p>signup works!</p>
+<div class="login_container">
+    <div class="brand_image"><img src="../../../../assets/header/keep-notes-logo.png" alt=""></div>
+    <h3 id="login_page_title">Sign up</h3>
+    <div class="loginform">
+        <app-input id="name" inputType="text" [(inputValue)]="name" placeholder="name" label="Name"
+            color="#fff"></app-input>
+        <app-input id="lastName" inputType="text" [(inputValue)]="lastName" placeholder="last name" label="Last name"
+            color="#fff"></app-input>
+        <app-input id="email" inputType="text" [(inputValue)]="email" placeholder="email" label="Email"
+            color="#fff"></app-input>
+        <label *ngIf="emailErrorMessage" class="input_error_message">{{emailErrorMessage}}</label>
+        <app-input id="password" inputType="password" [(inputValue)]="password" placeholder="password" label="Password"
+            color="#fff"></app-input>
+        <label *ngIf="passwordErrorMessage" class="input_error_message">{{passwordErrorMessage}}</label>
+        <app-button (btnClick)="signUpWithEmailAndPassword()" [isLoading]="isLoading" [id]="'login_submit'"
+            [btnType]="['full_width']" text="Signup"></app-button>
+        <a routerLink='/login' class="link_to_switch_page">Already have account?</a>
+    </div>
+</div>

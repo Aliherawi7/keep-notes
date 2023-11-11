@@ -9,6 +9,7 @@
     transition: all 0.2s ease-out;
     user-select: none;
     background-color: var(--orange);
+    position: relative;
 }
 
 .btn i {

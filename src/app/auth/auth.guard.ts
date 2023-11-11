@@ -8,6 +8,9 @@ export const authGuard = () => {
   if (authService.isLoggedIn) {
     return true;
   }
+  if (router.url == '/signup' || router.url == "/login") {
+    return false
+  }
 
-  return router.parseUrl("/login")
+  return router.parseUrl("/login");
 };

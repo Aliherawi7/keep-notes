@@ -11,7 +11,7 @@ export class ButtonComponent {
   @Input() icon?: string
   @Output() btnClick = new EventEmitter();
   @Input() id: string | null = "btn_id"
-
+  @Input() isLoading?: boolean = false;
 
   onClick() {
     this.btnClick.emit();

@@ -1,27 +1,18 @@
 import { Injectable } from '@angular/core';
-
-import { Observable, delay, of, tap } from 'rxjs';
+import { authentication } from '../config/firebase';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuardService {
+  public isLoggedIn = localStorage.getItem('accessToken') == undefined ? false : true;
 
-  constructor() { }
-
-  isLoggedIn = true;
-  redirectUrl: string | null = null;
-
-
-  login(): Observable<boolean> {
-    return of(true).pipe(
-      delay(500),
-      tap(() => this.isLoggedIn = true)
-    );
+  setLoggedIn(isLoggedIn: boolean) {
+    this.isLoggedIn = isLoggedIn;
   }
 
-  logout(): void {
-    this.isLoggedIn = false;
+  getIsLoggedIn(): boolean {
+    return this.isLoggedIn;
   }
 
 }

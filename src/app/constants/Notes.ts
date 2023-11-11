@@ -1,46 +1,49 @@
-export interface Note {
-    id: number,
-    date: string,
-    title: string,
-    text: Array<string>,
-    color: string
-}
+import { NoteForUI } from "../types/Note";
 
-
-export const notes: Note[] = [
+export const notes: NoteForUI[] = [
     {
-        id: 1,
-        date: 'Friday, May 19, 2023',
+        id: '1',
         title: "shopping list",
-        text: ["Bike", "Egg", "Banana", "Apple", "mobile chrger", "note book"],
-        color: 'orange'
+        data: "<h1>Heading 1 test for note ;lj;l kj;ljkgrf tuyt ytr yutruyryutr</h1>",
+        color: 'orange',
+        createdAt: new Date(),
+        lastUpdate: new Date(),
+        userId: 'user-id'
     },
     {
-        id: 2,
-        date: 'Friday, May 19, 2023',
+        id: '2',
         title: "To Do list",
-        text: ["implement the note application", "test the portal api", "add new feature to the portal api", "implement a text editor for note app"],
-        color: 'green'
+        data: "<b>bold test</b>",
+        color: 'green',
+        createdAt: new Date(),
+        lastUpdate: new Date(),
+        userId: 'user-id'
     },
     {
-        id: 3,
-        date: 'Friday, May 19, 2023',
+        id: '3',
         title: "Must read books",
-        text: ["Clean Architecture", "Clean coder", "DSA", "JavaScript the good parts", "Clean code"],
-        color: 'bule'
+        data: "Clean Architecture",
+        color: 'bule',
+        createdAt: new Date(),
+        lastUpdate: new Date(),
+        userId: 'user-id'
     },
     {
-        id: 4,
-        date: 'Friday, May 19, 2023',
+        id: '4',
         title: "Daily tasks",
-        text: ["this is for test"],
-        color: '#ddd'
+        data: "this is for test",
+        color: '#ddd',
+        createdAt: new Date(),
+        lastUpdate: new Date(),
+        userId: 'user-id'
     },
     {
-        id: 5,
-        date: 'Friday, May 19, 2023',
+        id: '5',
         title: "Note title",
-        text: ["this is for test"],
-        color: 'red'
+        data: "<h4>this is for test</h4>",
+        color: 'red',
+        createdAt: new Date(),
+        lastUpdate: new Date(),
+        userId: 'user-id'
     },
 ]

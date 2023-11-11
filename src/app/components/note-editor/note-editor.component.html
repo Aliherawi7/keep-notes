@@ -2,26 +2,24 @@
 
     <div class="note_editor_header flex align_items_center">
         <p>Create Your sticky note here</p>
-        <app-button routerLink="/notes" icon="bi bi-arrow-return-left"></app-button>
+        <app-button [routerLink]="['/notes']" icon="bi bi-arrow-return-left"></app-button>
     </div>
     <div class="note_editor_container">
         <app-input [id]="'note_title'" [(inputValue)]="noteTitle" placeholder="enter the title" label="Title"
             fontSize="18px"></app-input>
-        <div class="tools_container">
-            <ul class="tools">
-                <li><i class="bi bi-type-bold"></i></li>
-                <li><i class="bi bi-type-italic"></i></li>
-                <li><i class="bi bi-type-underline"></i></li>
-                <li><i class="bi bi-file-earmark-font-fill"></i></li>
-                <li><i class="bi bi-palette-fill"></i></li>
-                <li><i class="bi bi-paint-bucket"></i></li>
-
-            </ul>
-        </div>
-        <textarea>{{textValueForTextArea}}</textarea>
+        <app-input [id]="'note_title'" [(inputValue)]="color" placeholder="choose a color" label="Color" fontSize="18px"
+            inputType="color"></app-input>
+        <ckeditor [editor]="editor" data="<p>Hello, world!</p>" [(ngModel)]="data" (change)="onChange($event)"
+            (ready)="onReady($event)" [config]="editorConfig">
+        </ckeditor>
     </div>
     <div class="btn_container">
-        <app-button [id]="'btn_save'" [btnType]="['success']" text="save" icon="bi bi-sd-card-fill"></app-button>
-        <app-button [id]="'btn_remove'" text="remove" icon="bi bi-trash-fill"></app-button>
+        <app-button [isLoading]="isLoadingBtn" [id]="'btn_save'" [btnType]="['success']" text="save"
+            icon="bi bi-sd-card-fill" (btnClick)="save()"></app-button>
+        <app-button [id]="'btn_remove'" text="remove" icon="bi bi-trash-fill"
+            (btnClick)="handleModalShow()"></app-button>
     </div>
+    <app-modal [modalType]="'asking'" [message]="modalMessage" [showModal]="showModal" (onYesClick)="deleteNote()"
+        (onNoClick)="handleModalShow()"></app-modal>
+    <app-loading *ngIf="isLoading"></app-loading>
 </div>

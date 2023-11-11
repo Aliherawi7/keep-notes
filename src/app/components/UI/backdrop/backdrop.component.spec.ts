@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BackdropComponent } from './backdrop.component';
+import { TemplateRef } from '@angular/core';
+TemplateRef
 
 describe('BackdropComponent', () => {
   let component: BackdropComponent;

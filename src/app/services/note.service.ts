@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Note, notes } from '../constants/Notes';
+import { HttpClient } from '@angular/common/http';
+import { Observable, map, from, switchMap } from "rxjs"
+import { FirebaseService } from './firebase.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NoteService {
 
-  constructor() { }
+  constructor(private http: HttpClient, private firebaseService: FirebaseService) { }
 
 
   findNoteById(id: number): Note | undefined {
@@ -15,9 +18,10 @@ export class NoteService {
     });
   }
 
-  getTheTexts(note: Note): string {
-    var txt = ''
-    note.text.forEach(t => txt += "\n" + t)
-    return txt;
+  getNoteFromAPIById(id: number): Note | undefined {
+    this.firebaseService.getNotesByUserId("1")
+    return;
   }
+
+
 }

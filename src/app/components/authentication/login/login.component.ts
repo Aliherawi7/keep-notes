@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthGuardService } from 'src/app/services/auth-guard.service';
+import { FirebaseService } from 'src/app/services/firebase.service';
+import { User } from 'src/app/types/User';
 
 
 @Component({
@@ -9,27 +11,58 @@ import { AuthGuardService } from 'src/app/services/auth-guard.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  username: string = '';
+  email: string = '';
   password: string = '';
   value: string = ''
+  emailErrorMessage?: string
+  passwordErrorMessage?: string
+  isLoading: boolean = false
 
-  constructor(private authService: AuthGuardService, private rouer: Router) {
+  constructor(
+    private authService: AuthGuardService,
+    private router: Router,
+    private firebaseService: FirebaseService) {
 
 
   }
-
 
   printInputs(): void {
-    console.log(this.password, this.username)
+    console.log(this.password, this.email)
   }
 
-  login(): void {
-    if (this.username == "aliherawi7@gmail.com" && this.password == "12345") {
-      var log = this.authService.login();
-      log.forEach(item => {
-        this.rouer.navigate(["/"])
+  loginWithEmailAndPassword(): void {
+    this.isLoading = true
+    this.emailErrorMessage = this.passwordErrorMessage = ''
+    this.firebaseService.signInWithEmailAndPassword(this.email, this.password)
+      .then(res => {
+        localStorage.setItem("accessToken", res.user.refreshToken)
+        localStorage.setItem("refreshToken", res.user.refreshToken)
+        localStorage.setItem("userId", res.user.uid);
+        this.firebaseService.getUserInfo(res.user.uid)
+          .then(res => {
+            const user: User = res.docs[0].data() as User
+            localStorage.setItem("name", user.name)
+            localStorage.setItem('lastName', user.lastName)
+          })
+        this.authService.setLoggedIn(true)
+        this.router.navigate(['/']);
       })
-    }
+      .catch(error => {
+        this.isLoading = false
+        const message: string = ('' + error.message)
+          .substring(error.message.indexOf('(') + 1, error.message.indexOf(')'));
+
+        console.log(error.message);
+        if (message.includes("email")) {
+          this.emailErrorMessage = message
+        } else {
+          this.passwordErrorMessage = message
+        }
+      })
+  }
+
+  loginWithGoogle() {
+    this.loginWithGoogle();
   }
 
 

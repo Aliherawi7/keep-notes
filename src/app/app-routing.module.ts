@@ -9,6 +9,7 @@ import { LoadingComponent } from './components/UI/loading/loading.component';
 import { LoginComponent } from './components/authentication/login/login.component';
 import { SignupComponent } from './components/authentication/signup/signup.component';
 import { authGuard } from './auth/auth.guard';
+import { TrashComponent } from './components/trash/trash.component';
 
 const routes: Routes = [
   {
@@ -21,20 +22,27 @@ const routes: Routes = [
   {
     path: Paths.notes,
     component: NotesComponent,
-    title: "notes",
+    title: "Notes",
     pathMatch: "full",
     canActivate: [authGuard]
   },
   {
     path: Paths.addNote,
-    title: "add note",
+    title: "Add note",
     component: NoteEditorComponent,
     canActivate: [authGuard]
   },
   {
     path: Paths.editNote,
-    title: "edit note",
+    title: "Edit note",
     component: NoteEditorComponent,
+    pathMatch: "full",
+    canActivate: [authGuard]
+  },
+  {
+    path: Paths.trash,
+    title: "Trash",
+    component: TrashComponent,
     pathMatch: "full",
     canActivate: [authGuard]
   },

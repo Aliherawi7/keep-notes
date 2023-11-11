@@ -9,6 +9,7 @@ describe('NoteComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [NoteComponent]
+
     });
     fixture = TestBed.createComponent(NoteComponent);
     component = fixture.componentInstance;

@@ -36,8 +36,10 @@
             <i class="bi bi-journal-bookmark-fill"></i>Recent
         </div>
         <div class="container">
-            <app-note *ngFor="let item of recentNotes" color={{item.color}} text={{item.text}} title={{item.title}}
-                date={{item.date}} [id]="item.id"></app-note>
+            <app-loading *ngIf="isLoading"></app-loading>
+            <app-note *ngFor="let item of allNotes" color={{item.color}} data={{item.data}} title={{item.title}}
+                [date]='item.lastUpdate' [id]="item.id"></app-note>
+            <h3 *ngIf="emptyMessage">{{emptyMessage}}</h3>
         </div>
     </div>
 </div>

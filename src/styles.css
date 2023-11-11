@@ -45,6 +45,15 @@
     border-radius: 10px;
 }
 
+li::marker {
+    color: inherit;
+}
+
+
+.ck .ck-powered-by {
+    display: none;
+}
+
 /* General Classes */
 
 .flex {
@@ -60,12 +69,12 @@
 }
 
 .full_width {
-    width: calc(100vw - 180px);
-    background-color: #eadbff47;
+    width: calc(100vw - 220px);
 }
 
 a {
     text-decoration: none;
+    color: inherit;
 }
 
 i {
@@ -113,4 +122,19 @@ textarea {
 
 .box_shadow {
     box-shadow: 0 0 3px 4px #ddd;
+}
+
+.ck-content {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+}
+
+.note_editor_container .ck-editor__editable {
+    border: 1px solid #ccced1 !important;
+}
+
+
+.input_error_message {
+    color: #de4313;
+
 }

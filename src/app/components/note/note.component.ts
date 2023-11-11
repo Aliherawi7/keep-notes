@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { NoteService } from 'src/app/services/note.service';
 
 @Component({
   selector: 'app-note',
@@ -7,19 +6,17 @@ import { NoteService } from 'src/app/services/note.service';
   styleUrls: ['./note.component.css']
 })
 export class NoteComponent {
-  @Input() id?: number;
+  @Input() id?: string;
   @Input() color?: string;
   @Input() title?: string;
-  @Input() date?: string;
-  @Input() text?: string;
+  @Input() date?: Date;
+  @Input() data?: string;
+  formattedDate?: string
   isLoading: boolean = true;
-
-  constructor(private noteService: NoteService) {
-
-  }
 
   ngOnInit() {
     this.isLoading = true;
+    this.formattedDate = this.date?.toUTCString()
     console.log(this.id)
   }
 
