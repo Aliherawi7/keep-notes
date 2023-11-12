@@ -13,7 +13,7 @@
                     <li><a [routerLink]="['/notes/edit-note/',id]"><i class="bi bi-arrows-angle-expand"></i>open
                             note
                         </a></li>
-                    <li><i class="bi bi-save-fill"></i>save</li>
+                    <li><i class="bi bi-pin-fill"></i>Pin</li>
                     <li *ngIf="enable" (click)="moveToTrash()"><i class="bi bi-trash-fill"></i>remove</li>
                     <li *ngIf="!enable" (click)="moveFromTrash()"><i class="bi bi-reply-fill"></i>Restore</li>
                     <li *ngIf="!enable" (click)="deleteForever()"><i class="bi bi-x"></i>Delete forever</li>

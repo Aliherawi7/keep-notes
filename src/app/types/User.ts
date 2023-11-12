@@ -1,9 +1,9 @@
 export interface User {
     authGeneratedId: string,
-    name: string,
-    lastName: string,
-    email: string,
-    password: string,
+    name: string | null,
+    lastName: string | null,
+    email: string | null,
+    password: string | null,
     joinedDate: Date,
-    imageUrl: string,
+    imageUrl: string | null,
 }

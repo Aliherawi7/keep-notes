@@ -10,8 +10,8 @@
         <label *ngIf="passwordErrorMessage" class="input_error_message">{{passwordErrorMessage}}</label>
         <app-button (btnClick)="loginWithEmailAndPassword()" [id]="'login_submit'" [btnType]="['full_width']"
             text="Login" [isLoading]="isLoading"></app-button>
-        <app-button (btnClick)="loginWithGoogle()" [id]="'login_submit'" [btnType]="['full_width']"
-            text="Login with Google"></app-button>
+        <app-button [isLoading]="isLoadingGoogle" (btnClick)="loginWithGoogle()" [id]="'login_submit'"
+            [btnType]="['full_width']" text="Login with Google"></app-button>
         <a routerLink='/signup' class="link_to_switch_page">Don't you have account?</a>
     </div>
 </div>

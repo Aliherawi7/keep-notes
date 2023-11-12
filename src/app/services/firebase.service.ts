@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { UserCredential, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import { authentication, database, googleProvider } from '../config/firebase';
 import { getDoc, collection, addDoc, deleteDoc, getDocs, where, query, doc, updateDoc, orderBy, and } from "firebase/firestore";
 import { User } from '../types/User';
@@ -65,7 +65,7 @@ export class FirebaseService {
     return signInWithEmailAndPassword(this.Authentication, email, password)
   }
 
-  signInWithGoogle(): Promise<any> {
+  signInWithGoogle(): Promise<UserCredential> {
     return signInWithPopup(this.Authentication, this.GoogleProvider,)
   }
 

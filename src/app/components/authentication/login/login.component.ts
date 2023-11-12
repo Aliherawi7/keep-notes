@@ -17,6 +17,7 @@ export class LoginComponent {
   emailErrorMessage?: string
   passwordErrorMessage?: string
   isLoading: boolean = false
+  isLoadingGoogle: boolean = false
 
   constructor(
     private authService: AuthGuardService,
@@ -41,8 +42,8 @@ export class LoginComponent {
         this.firebaseService.getUserInfo(res.user.uid)
           .then(r => {
             const user: User = r.docs[0].data() as User
-            localStorage.setItem("keepNotesUserName", user.name)
-            localStorage.setItem('keepNotesLastName', user.lastName)
+            localStorage.setItem("keepNotesUserName", user.name as string)
+            localStorage.setItem('keepNotesLastName', user.lastName as string)
             this.router.navigate(['/']);
           })
         this.authService.setLoggedIn(true)
@@ -63,7 +64,30 @@ export class LoginComponent {
   }
 
   loginWithGoogle() {
-    this.loginWithGoogle();
+    this.isLoadingGoogle = true;
+    this.firebaseService.signInWithGoogle()
+      .then(res => {
+        console.log(res)
+        this.isLoadingGoogle = false;
+        this.authService.setLoggedIn(true)
+        localStorage.setItem('keepNotesUserName', res.user.displayName as string)
+        localStorage.setItem("userId", res.user.uid);
+        const user: User = {
+          authGeneratedId: res.user.uid,
+          email: res.user.email,
+          imageUrl: res.user.photoURL,
+          joinedDate: new Date(),
+          lastName: res.user.displayName,
+          name: res.user.displayName,
+          password: null
+        }
+        this.router.navigate(['/']);
+        this.firebaseService.addUserInfo(user)
+      })
+      .catch(error => {
+        this.isLoadingGoogle = false;
+        console.log(error)
+      })
   }
 
 

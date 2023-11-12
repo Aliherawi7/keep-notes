@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { Paths } from '../../constants/Paths';
 import { FirebaseService } from 'src/app/services/firebase.service';
 
@@ -11,8 +11,9 @@ import { FirebaseService } from 'src/app/services/firebase.service';
 export class SidebarComponent {
   route?: Router;
   number?: number;
+  activePath?: string;
 
-  constructor(private firebaseService: FirebaseService) {
+  constructor(private router: Router, private firebaseService: FirebaseService) {
     let path = window.location.pathname;
     console.log(path)
     if (path.includes(Paths.notes)) {
@@ -24,8 +25,13 @@ export class SidebarComponent {
     }
   }
 
-  setActive(number: number) {
-    this.number = number
+
+  ngOnInit() {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.activePath = event.url;
+      }
+    });
   }
 
   logout() {
