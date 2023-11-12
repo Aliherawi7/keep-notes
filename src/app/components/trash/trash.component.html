@@ -1,3 +1,11 @@
-<p>trash works!</p>
+<div id="trash">
+    <div class="notes_title notes_header">Trash:</div>
 
-<app-button text="trash"></app-button>
+    <div class="notes_container flex justify_content_center align_items_center">
+        <app-full-screen-loading *ngIf="isLoading"></app-full-screen-loading>
+        <app-note *ngFor="let item of allNotes" [color]='item.color' [data]='item.data' [title]='item.title'
+            [lastUpdate]='item.lastUpdate' [createdAt]="item.createdAt" [enable]="item.enable" [userId]='item.userId'
+            [id]="item.id"></app-note>
+        <h3 *ngIf="emptyMessage">{{emptyMessage}}</h3>
+    </div>
+</div>

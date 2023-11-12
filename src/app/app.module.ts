@@ -22,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BtnLoadingComponent } from './components/UI/btn-loading/btn-loading.component';
 import { TrashComponent } from './components/trash/trash.component';
 import { ModalComponent } from './components/UI/modal/modal.component';
+import { FullScreenLoadingComponent } from './components/UI/full-screen-loading/full-screen-loading.component';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { ModalComponent } from './components/UI/modal/modal.component';
     BtnLoadingComponent,
     TrashComponent,
     ModalComponent,
+    FullScreenLoadingComponent,
   ],
   imports: [
     BrowserModule,

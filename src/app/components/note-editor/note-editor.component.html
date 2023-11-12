@@ -1,4 +1,5 @@
-<div class="note_editor full_width slideInRight">
+<app-full-screen-loading *ngIf="isLoading"></app-full-screen-loading>
+<div *ngIf="!isLoading" class="note_editor full_width slideInRight">
 
     <div class="note_editor_header flex align_items_center">
         <p>Create Your sticky note here</p>
@@ -21,5 +22,5 @@
     </div>
     <app-modal [modalType]="'asking'" [message]="modalMessage" [showModal]="showModal" (onYesClick)="deleteNote()"
         (onNoClick)="handleModalShow()"></app-modal>
-    <app-loading *ngIf="isLoading"></app-loading>
+
 </div>

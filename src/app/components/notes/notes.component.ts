@@ -35,6 +35,7 @@ export class NotesComponent {
             const lastUpdate: Timestamp = data['lastUpdate'];
             return { ...doc.data() as Note, id: doc.id, createdAt: createdAt.toDate(), lastUpdate: lastUpdate.toDate() };
           })
+          this.allNotes = this.allNotes.filter(n => n.enable == true)
         }
 
       })

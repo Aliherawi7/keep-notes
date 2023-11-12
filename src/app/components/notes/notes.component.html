@@ -2,7 +2,7 @@
     <div class="notes_header align_items_center">
         <div class="search_bar flex align_items_center">
             <div class="notes_title">Sticky Note</div>
-            <app-input id="search_note" inputType="text" placeholder="find your notes"></app-input>
+            <app-input [showLable]="false" id="search_note" inputType="text" placeholder="find your notes"></app-input>
         </div>
 
         <app-button [routerLink]="['/notes/add-note/']" icon="bi bi-plus-lg"></app-button>
@@ -10,10 +10,9 @@
 
     <div class="notes_container">
         <app-loading *ngIf="isLoading"></app-loading>
-        <app-note *ngFor="let item of allNotes" color={{item.color}} data={{item.data}} title={{item.title}}
-            [date]='item.lastUpdate' [id]="item.id"></app-note>
+        <app-note *ngFor="let item of allNotes" [color]='item.color' [data]='item.data' [title]='item.title'
+            [lastUpdate]='item.lastUpdate' [createdAt]="item.createdAt" [enable]="item.enable" [userId]='item.userId'
+            [id]="item.id"></app-note>
         <h3 *ngIf="emptyMessage">{{emptyMessage}}</h3>
     </div>
-
-
 </div>

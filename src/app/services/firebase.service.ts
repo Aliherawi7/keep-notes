@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import { authentication, database, googleProvider } from '../config/firebase';
-import { getDoc, collection, addDoc, deleteDoc, getDocs, where, query, doc, updateDoc, orderBy } from "firebase/firestore";
+import { getDoc, collection, addDoc, deleteDoc, getDocs, where, query, doc, updateDoc, orderBy, and } from "firebase/firestore";
 import { User } from '../types/User';
 import { Note, NoteForUI } from '../types/Note';
 import { Router } from '@angular/router';
@@ -17,9 +17,14 @@ export class FirebaseService {
   /***********************   Notes   **********************/
   private notesCollection = collection(this.Database, "Notes");
   getNotesByUserId(userId: string) {
-    const q = query(this.notesCollection, where("userId", "==", userId));
+    const q = query(this.notesCollection, where("userId", "==", userId), where("enable", "==", true));
     return getDocs(q);
   }
+  getNotesInTrashByUserId(userId: string) {
+    const q = query(this.notesCollection, where("userId", "==", userId), where("enable", "==", false));
+    return getDocs(q);
+  }
+
 
   getNoteByNoteId(noteId: string) {
     return getDoc(doc(this.Database, 'Notes', noteId))
@@ -33,6 +38,16 @@ export class FirebaseService {
     const noteDoc = doc(this.Database, 'Notes', note.id);
     return updateDoc(noteDoc, { ...note })
   }
+  moveNoteInTrash(note: NoteForUI) {
+    const noteDoc = doc(this.Database, 'Notes', note.id);
+    return updateDoc(noteDoc, { ...note, enable: false })
+  }
+
+  moveNoteFromTrash(note: NoteForUI) {
+    const noteDoc = doc(this.Database, 'Notes', note.id);
+    return updateDoc(noteDoc, { ...note, enable: true })
+  }
+
 
   deleteNote(noteId: string) {
     const noteDoc = doc(this.Database, 'Notes', noteId);

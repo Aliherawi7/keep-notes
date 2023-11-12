@@ -4,7 +4,8 @@ export interface Note {
     data: string,
     color: string,
     lastUpdate: Date,
-    userId: string
+    userId: string,
+    enable: boolean
 }
 
 export interface NoteForUI {
@@ -14,5 +15,6 @@ export interface NoteForUI {
     data: string,
     color: string,
     lastUpdate: Date,
-    userId: string
+    userId: string,
+    enable: boolean
 }

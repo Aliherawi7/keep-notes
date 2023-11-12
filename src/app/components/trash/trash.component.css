@@ -1,0 +1,11 @@
+#trash {
+    width: 100%;
+}
+
+.notes_header {
+    padding: 20px;
+    display: flex;
+    font-size: 1.5rem;
+    font-weight: 900;
+    justify-content: space-between;
+}

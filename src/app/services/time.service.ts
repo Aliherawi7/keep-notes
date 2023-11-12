@@ -16,12 +16,15 @@ export class TimeService {
   }
 
   getTimeMessage(): string {
-    var hour = this.date.getHours() > 12 ? this.date.getHours() / 2 : this.date.getHours();
-    if (hour >= 6 && this.date.toLocaleTimeString().includes('PM'))
-      return "Good Evening";
-    if (hour <= 5 && this.date.toLocaleTimeString().includes("PM"))
+    var hour = this.date.getHours()
+    console.log(hour, this.date.getHours())
+    if (hour < 12)
+      return 'Good Morning';
+
+    if (hour >= 12 && hour <= 18)
       return "Good Afternoon";
-    return 'Good Morning';
+
+    return "Good Evening";
   }
 
 }

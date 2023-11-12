@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { TimeService } from '../../services/time.service';
-import { notes } from '../../constants/Notes';
 import { Note, NoteForUI } from 'src/app/types/Note';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { Timestamp } from 'firebase/firestore';
@@ -19,11 +18,12 @@ export class HomeComponent {
   allNotes?: NoteForUI[] = [];
 
   constructor(private timeService: TimeService, private firebaseService: FirebaseService) {
-    this.message = this.timeService.getTimeMessage() + ' ' + localStorage.getItem("keepNotesLastName")
+    this.message = this.timeService.getTimeMessage() + ' ' + localStorage.getItem("keepNotesUserName")
     this.dateMessage = this.timeService.getTimeAndDateString();
   }
 
   ngOnInit() {
+    this.message = this.timeService.getTimeMessage() + ' ' + localStorage.getItem("keepNotesUserName")
     // for test purpose
     this.firebaseService.getNotesByUserId(localStorage.getItem("userId") + "")
       .then(res => {

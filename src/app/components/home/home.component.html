@@ -37,8 +37,9 @@
         </div>
         <div class="container">
             <app-loading *ngIf="isLoading"></app-loading>
-            <app-note *ngFor="let item of allNotes" color={{item.color}} data={{item.data}} title={{item.title}}
-                [date]='item.lastUpdate' [id]="item.id"></app-note>
+            <app-note *ngFor="let item of allNotes" [color]='item.color' [data]='item.data' [title]='item.title'
+                [lastUpdate]='item.lastUpdate' [createdAt]="item.createdAt" [enable]="item.enable"
+                [userId]='item.userId' [id]="item.id"></app-note>
             <h3 *ngIf="emptyMessage">{{emptyMessage}}</h3>
         </div>
     </div>

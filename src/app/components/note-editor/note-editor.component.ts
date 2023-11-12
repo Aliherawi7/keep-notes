@@ -11,7 +11,7 @@ import { FirebaseService } from 'src/app/services/firebase.service';
   styleUrls: ['./note-editor.component.css']
 })
 export class NoteEditorComponent {
-  isLoading: boolean = true;
+  isLoading: boolean = false;
   isLoadingBtn: boolean = false;
   showModal: boolean = false;
   modalMessage: string = '';
@@ -52,6 +52,7 @@ export class NoteEditorComponent {
     console.log(pathVar)
     console.log(userId)
     if (this.router.url.includes('/edit-note')) {
+      this.isLoading = true;
       this.firebaseService.getNoteByNoteId(pathVar)
         .then(res => {
           const resData = res.data() as Note
@@ -80,6 +81,7 @@ export class NoteEditorComponent {
         lastUpdate: new Date(),
         title: this.noteTitle,
         userId: localStorage.getItem("userId") || '',
+        enable: true
       }
       this.firebaseService.updateNote(note)
         .then(res => {
@@ -95,6 +97,7 @@ export class NoteEditorComponent {
         lastUpdate: new Date(),
         title: this.noteTitle,
         userId: localStorage.getItem("userId") || '',
+        enable: true
       }
       this.firebaseService.addNote(note)
         .then(res => {

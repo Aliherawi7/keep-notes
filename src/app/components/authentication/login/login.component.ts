@@ -39,13 +39,14 @@ export class LoginComponent {
         localStorage.setItem("refreshToken", res.user.refreshToken)
         localStorage.setItem("userId", res.user.uid);
         this.firebaseService.getUserInfo(res.user.uid)
-          .then(res => {
-            const user: User = res.docs[0].data() as User
+          .then(r => {
+            const user: User = r.docs[0].data() as User
             localStorage.setItem("keepNotesUserName", user.name)
             localStorage.setItem('keepNotesLastName', user.lastName)
+            this.router.navigate(['/']);
           })
         this.authService.setLoggedIn(true)
-        this.router.navigate(['/']);
+
       })
       .catch(error => {
         this.isLoading = false

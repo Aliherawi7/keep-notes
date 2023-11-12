@@ -1,0 +1,39 @@
+.full_screen_loading_wrapper {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    left: 180px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.full_screen_loading {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+}
+
+.full_screen_loading:after {
+    content: " ";
+    display: block;
+    width: 40px;
+    height: 40px;
+    margin: 4px;
+    border-radius: 50%;
+    border: 5px solid var(--orange);
+    border-color: var(--orange) transparent var(--orange) transparent;
+    animation: spinner 1.2s linear infinite;
+}
+
+@keyframes spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

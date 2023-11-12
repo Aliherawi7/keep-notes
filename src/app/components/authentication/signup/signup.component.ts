@@ -42,9 +42,11 @@ export class SignupComponent {
           email: this.email,
           imageUrl: "",
           joinedDate: new Date()
+        }).then(r => {
+          this.authService.setLoggedIn(true)
+          this.router.navigate(['/']);
         })
-        this.authService.setLoggedIn(true)
-        this.router.navigate(['/']);
+
 
       })
       .catch(error => {

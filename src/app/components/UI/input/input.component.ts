@@ -6,6 +6,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./input.component.css']
 })
 export class InputComponent {
+  @Input() showLable: boolean = true;
   @Input() inputValue?: string;
   @Input() id?: string;
   @Input() label?: string;
@@ -17,6 +18,7 @@ export class InputComponent {
 
   onInput() {
     this.inputValueChange.emit(this.inputValue);
+    console.log(this.showLable)
   }
 
 }
