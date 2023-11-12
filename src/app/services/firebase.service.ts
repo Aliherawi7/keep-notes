@@ -16,6 +16,11 @@ export class FirebaseService {
 
   /***********************   Notes   **********************/
   private notesCollection = collection(this.Database, "Notes");
+  getAllNotesByUserId(userId: string) {
+    const q = query(this.notesCollection, where("userId", "==", userId));
+    return getDocs(q);
+  }
+
   getNotesByUserId(userId: string) {
     const q = query(this.notesCollection, where("userId", "==", userId), where("enable", "==", true));
     return getDocs(q);

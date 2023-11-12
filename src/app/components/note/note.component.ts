@@ -30,7 +30,6 @@ export class NoteComponent {
 
 
   moveToTrash() {
-    console.log("remov clicked")
     this.firebaseService.moveNoteInTrash({
       color: this.color,
       createdAt: this.createdAt,
@@ -47,7 +46,6 @@ export class NoteComponent {
   }
 
   deleteForever() {
-    console.log("delete for ever clicked")
     this.firebaseService.deleteNote(this.id)
       .then(r => {
         console.log(r)
@@ -55,7 +53,6 @@ export class NoteComponent {
   }
 
   moveFromTrash() {
-    console.log("remov clicked")
     this.firebaseService.moveNoteFromTrash({
       color: this.color,
       createdAt: this.createdAt,

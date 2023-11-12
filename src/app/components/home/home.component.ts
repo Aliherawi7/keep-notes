@@ -3,6 +3,7 @@ import { TimeService } from '../../services/time.service';
 import { Note, NoteForUI } from 'src/app/types/Note';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { Timestamp } from 'firebase/firestore';
+import { NoteService } from 'src/app/services/note.service';
 
 @Component({
   selector: 'app-home',
@@ -17,31 +18,16 @@ export class HomeComponent {
   emptyMessage: string = ''
   allNotes?: NoteForUI[] = [];
 
-  constructor(private timeService: TimeService, private firebaseService: FirebaseService) {
+  constructor(private timeService: TimeService,
+    private firebaseService: FirebaseService,
+    private noteService: NoteService) {
+    this.message = this.timeService.getTimeMessage() + ' ' + localStorage.getItem("keepNotesUserName")
     this.message = this.timeService.getTimeMessage() + ' ' + localStorage.getItem("keepNotesUserName")
     this.dateMessage = this.timeService.getTimeAndDateString();
+    this.isLoading = this.noteService.isLoading
+    this.allNotes = this.noteService.allNotes;
+
   }
 
-  ngOnInit() {
-    this.message = this.timeService.getTimeMessage() + ' ' + localStorage.getItem("keepNotesUserName")
-    // for test purpose
-    this.firebaseService.getNotesByUserId(localStorage.getItem("userId") + "")
-      .then(res => {
-        this.isLoading = false
-
-        console.log(res.docs)
-        if (res.docs.length == 0) {
-          this.emptyMessage = "You have no note!"
-        } else {
-          this.allNotes = res.docs.map(doc => {
-            const data = doc.data()
-            const createdAt: Timestamp = data['createdAt'];
-            const lastUpdate: Timestamp = data['lastUpdate'];
-            return { ...doc.data() as Note, id: doc.id, createdAt: createdAt.toDate(), lastUpdate: lastUpdate.toDate() };
-          })
-        }
-
-      })
-  }
 
 }
