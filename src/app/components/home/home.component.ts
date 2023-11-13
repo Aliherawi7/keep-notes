@@ -2,8 +2,12 @@ import { Component } from '@angular/core';
 import { TimeService } from '../../services/time.service';
 import { Note, NoteForUI } from 'src/app/types/Note';
 import { FirebaseService } from 'src/app/services/firebase.service';
-import { Timestamp } from 'firebase/firestore';
 import { NoteService } from 'src/app/services/note.service';
+import { Store, select } from '@ngrx/store';
+import { State } from 'src/app/state/state';
+import * as actions from "../../state/actions/NoteActions"
+import { selectAllNotes } from 'src/app/state/reducers/NoteReducer';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -11,22 +15,30 @@ import { NoteService } from 'src/app/services/note.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  isLoading: boolean = true
+  notes: NoteForUI[] = []
+  isLoading: boolean = true;
   message: string
   dateMessage?: string
   recentNotes: NoteForUI[] = []
   emptyMessage: string = ''
-  allNotes?: NoteForUI[] = [];
 
-  constructor(private timeService: TimeService,
-    private firebaseService: FirebaseService,
-    private noteService: NoteService) {
-    this.message = this.timeService.getTimeMessage() + ' ' + localStorage.getItem("keepNotesUserName")
+
+  constructor(
+    private timeService: TimeService,
+    private noteService: NoteService,
+    private state: Store<State>) {
+    this.state.select(selectAllNotes).subscribe(n => {
+      this.isLoading = this.noteService.isLoading
+      this.notes = n;
+    })
+
     this.message = this.timeService.getTimeMessage() + ' ' + localStorage.getItem("keepNotesUserName")
     this.dateMessage = this.timeService.getTimeAndDateString();
-    this.isLoading = this.noteService.isLoading
-    this.allNotes = this.noteService.allNotes;
 
+    this.noteService.getAllNotes()
+      .then(res => {
+        this.state.dispatch(actions.addAllNotes({ notes: res }))
+      })
   }
 
 

@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FirebaseService } from 'src/app/services/firebase.service';
+import { NoteService } from 'src/app/services/note.service';
 
 @Component({
   selector: 'app-note',
@@ -19,7 +20,7 @@ export class NoteComponent {
   formattedDate?: string
   isLoading: boolean = true;
 
-  constructor(private firebaseService: FirebaseService) {
+  constructor(private noteService: NoteService) {
   }
 
   ngOnInit() {
@@ -30,42 +31,15 @@ export class NoteComponent {
 
 
   moveToTrash() {
-    this.firebaseService.moveNoteInTrash({
-      color: this.color,
-      createdAt: this.createdAt,
-      data: this.data,
-      enable: this.enable,
-      id: this.id,
-      lastUpdate: this.lastUpdate,
-      title: this.title,
-      userId: this.userId
-    })
-      .then(r => {
-        console.log(r)
-      })
+    this.noteService.moveToTrash(this.id)
   }
 
   deleteForever() {
-    this.firebaseService.deleteNote(this.id)
-      .then(r => {
-        console.log(r)
-      })
+    this.noteService.deleteForever(this.id)
   }
 
   moveFromTrash() {
-    this.firebaseService.moveNoteFromTrash({
-      color: this.color,
-      createdAt: this.createdAt,
-      data: this.data,
-      enable: this.enable,
-      id: this.id,
-      lastUpdate: this.lastUpdate,
-      title: this.title,
-      userId: this.userId
-    })
-      .then(r => {
-        console.log(r)
-      })
+    this.noteService.moveFromTrash(this.id)
   }
 
 

@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { Note, NoteForUI } from 'src/app/types/Note';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { Timestamp } from 'firebase/firestore';
+import { Store } from '@ngrx/store';
+import { State } from 'src/app/state/state';
+import { selectAllTrash } from 'src/app/state/reducers/NoteReducer';
+import { NoteService } from 'src/app/services/note.service';
 
 @Component({
   selector: 'app-trash',
@@ -13,28 +17,16 @@ export class TrashComponent {
   isLoading: boolean = true;
   emptyMessage?: string
 
-  constructor(private firebaseService: FirebaseService) {
+  constructor(private state: Store<State>, private noteService: NoteService) {
   }
 
 
   ngOnInit() {
     // for test purpose
-    this.firebaseService.getNotesInTrashByUserId(localStorage.getItem("userId") + "")
-      .then(res => {
-        this.isLoading = false
-        console.log(res.docs)
-        if (res.docs.length == 0) {
-          this.emptyMessage = "You have no note!"
-        } else {
-          this.allNotes = res.docs.map(doc => {
-            const data = doc.data()
-            const createdAt: Timestamp = data['createdAt'];
-            const lastUpdate: Timestamp = data['lastUpdate'];
-            return { ...doc.data() as Note, id: doc.id, createdAt: createdAt.toDate(), lastUpdate: lastUpdate.toDate() };
-          })
-        }
-
-      })
+    this.state.select(selectAllTrash).subscribe(t => {
+      this.isLoading = this.noteService.isLoading;
+      this.allNotes = t;
+    })
   }
 
 }

@@ -49,6 +49,7 @@ export class FirebaseService {
   }
 
   moveNoteFromTrash(note: NoteForUI) {
+    console.log(note)
     const noteDoc = doc(this.Database, 'Notes', note.id);
     return updateDoc(noteDoc, { ...note, enable: true })
   }

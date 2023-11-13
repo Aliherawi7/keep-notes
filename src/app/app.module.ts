@@ -23,6 +23,9 @@ import { BtnLoadingComponent } from './components/UI/btn-loading/btn-loading.com
 import { TrashComponent } from './components/trash/trash.component';
 import { ModalComponent } from './components/UI/modal/modal.component';
 import { FullScreenLoadingComponent } from './components/UI/full-screen-loading/full-screen-loading.component';
+import { StoreModule } from '@ngrx/store';
+import { appReducer } from './state/reducers/NoteReducer';
+
 
 
 @NgModule({
@@ -53,6 +56,8 @@ import { FullScreenLoadingComponent } from './components/UI/full-screen-loading/
     RouterModule,
     CKEditorModule,
     HttpClientModule,
+    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({ state: appReducer }),
   ],
   providers: [],
   bootstrap: [AppComponent]

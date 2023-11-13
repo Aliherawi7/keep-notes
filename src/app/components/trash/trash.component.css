@@ -2,6 +2,12 @@
     width: 100%;
 }
 
+.notes_container {
+    display: flex;
+    justify-content: center;
+    flex-flow: wrap;
+}
+
 .notes_header {
     padding: 20px;
     display: flex;
