@@ -6,6 +6,10 @@ export const addNote = createAction(
     '[notes] add note',
     props<NoteForUI>()
 );
+export const updateNote = createAction(
+    '[notes] update note',
+    props<NoteForUI>()
+);
 
 export const moveToTrash = createAction(
     '[notes] move to trash',

@@ -4,6 +4,7 @@ import { Note, NoteForUI } from 'src/app/types/Note';
 import { ChangeEvent } from '@ckeditor/ckeditor5-angular/ckeditor.component';
 import DecoupledEditor from '@ckeditor/ckeditor5-build-decoupled-document';
 import { FirebaseService } from 'src/app/services/firebase.service';
+import { NoteService } from 'src/app/services/note.service';
 
 @Component({
   selector: 'app-note-editor',
@@ -45,7 +46,9 @@ export class NoteEditorComponent {
   }
 
 
-  constructor(private router: Router, private firebaseService: FirebaseService) {
+  constructor(private router: Router,
+    private firebaseService: FirebaseService,
+    private noteService: NoteService) {
     var url = router.url.split('/');
     var pathVar: string = url[url.length - 1]
     var userId: string = localStorage.getItem('userId') || '';
@@ -55,6 +58,7 @@ export class NoteEditorComponent {
       this.isLoading = true;
       this.firebaseService.getNoteByNoteId(pathVar)
         .then(res => {
+          console.log(res)
           const resData = res.data() as Note
           this.color = resData.color;
           this.data = resData.data;
@@ -72,61 +76,39 @@ export class NoteEditorComponent {
 
   save() {
     this.isLoading = true;
+    const note: NoteForUI = {
+      id: this.id as string,
+      color: this.color,
+      createdAt: new Date(),
+      data: this.data || '',
+      lastUpdate: new Date(),
+      title: this.noteTitle,
+      userId: localStorage.getItem("userId") || '',
+      enable: true
+    }
     if (this.router.url.includes('/edit-note') && this.id) {
-      const note: NoteForUI = {
-        id: this.id,
-        color: this.color,
-        createdAt: new Date(),
-        data: this.data || '',
-        lastUpdate: new Date(),
-        title: this.noteTitle,
-        userId: localStorage.getItem("userId") || '',
-        enable: true
-      }
-      this.firebaseService.updateNote(note)
+      this.noteService.updateNote(note)
         .then(res => {
-          this.isLoading = false;
           this.router.navigate(['/notes'])
         })
-
     } else {
-      const note: Note = {
-        color: this.color,
-        createdAt: new Date(),
-        data: this.data || '',
-        lastUpdate: new Date(),
-        title: this.noteTitle,
-        userId: localStorage.getItem("userId") || '',
-        enable: true
-      }
-      this.firebaseService.addNote(note)
+      this.noteService.addNote(note)
         .then(res => {
           this.router.navigate(['/notes'])
-        })
-        .catch(error => {
-          this.isLoading = false;
-          console.log(error)
         })
     }
 
   }
 
   deleteNote() {
-    if (this.id)
-      this.firebaseService.deleteNote(this.id)
-        .then(res => {
-          console.log(res)
-          // this.router.navigate(['/notes']);
-        })
-        .catch(error => {
-          console.log(error)
-        })
+    if (this.id) {
+      this.noteService.moveToTrash(this.id)
+      this.router.navigate(['/notes'])
+    }
   }
 
   handleModalShow() {
     this.showModal = !this.showModal;
     console.log("click removed")
   }
-
-
 }

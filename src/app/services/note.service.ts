@@ -62,6 +62,27 @@ export class NoteService {
   }
 
 
+  async addNote(note: NoteForUI) {
+    return this.firebaseService.addNote({
+      color: note.color,
+      createdAt: note.createdAt,
+      data: note.data,
+      enable: note.enable,
+      lastUpdate: note.lastUpdate,
+      title: note.title,
+      userId: note.userId
+    })
+      .then(res => {
+        console.log(res.id)
+        return this.state.dispatch(actions.addNote({ ...note, id: res.id }))
+      })
+  }
+  async updateNote(note: NoteForUI) {
+    return this.firebaseService.updateNote(note)
+      .then(res => {
+        return this.state.dispatch(actions.updateNote(note))
+      })
+  }
   moveToTrash(noteId: string) {
     this.firebaseService.moveNoteInTrash(this.notes[this.findNoteIndexById(this.notes, noteId)])
       .then(res => {
@@ -77,7 +98,6 @@ export class NoteService {
   }
 
   moveFromTrash(noteId: string) {
-    console.log(noteId)
     this.firebaseService.moveNoteFromTrash(this.trash[this.findNoteIndexById(this.trash, noteId)])
       .then(res => {
         this.state.dispatch(actions.moveFromTrash({ noteId: noteId }))
