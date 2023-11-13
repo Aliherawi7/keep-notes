@@ -5,7 +5,7 @@ import { Timestamp } from 'firebase/firestore';
 import { Store } from '@ngrx/store';
 import { State } from '../state/state';
 import * as actions from "../state/actions/NoteActions";
-import { selectAllNotes, selectAllTrash } from '../state/reducers/NoteReducer';
+import { selectAllNotes, selectAllTrash, selectNoteEmptyMessage } from '../state/reducers/NoteReducer';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,7 @@ import { selectAllNotes, selectAllTrash } from '../state/reducers/NoteReducer';
 export class NoteService {
   isLoading: boolean = true;
   emptyMessage: string = ''
+  trashEmptyMessage: string = ''
   notes: NoteForUI[] = [];
   trash: NoteForUI[] = [];
 
@@ -24,35 +25,30 @@ export class NoteService {
     this.state.select(selectAllTrash).subscribe(t => {
       this.trash = t;
     })
+    this.state.select(selectNoteEmptyMessage).subscribe(m => {
+      this.emptyMessage = m;
+    })
     this.firebaseService.getAllNotesByUserId(localStorage.getItem("userId") + "")
       .then(res => {
         this.isLoading = false
-        console.log(res.docs)
-        if (res.docs.length == 0) {
-          this.emptyMessage = "You have no note!"
-        } else {
-          let allNotes = res.docs.map(doc => {
-            const data = doc.data()
-            const createdAt: Timestamp = data['createdAt'];
-            const lastUpdate: Timestamp = data['lastUpdate'];
-            return { ...doc.data() as Note, id: doc.id, createdAt: createdAt.toDate(), lastUpdate: lastUpdate.toDate() };
-          })
-
-          const noteInTrash = allNotes.filter(n => n.enable == false)
-          allNotes = allNotes.filter(n => n.enable == true)
-          this.state.dispatch(actions.addAllNotes({ notes: allNotes }))
-          this.state.dispatch(actions.addAllTrash({ trash: noteInTrash }))
-          this.isLoading = false
-        }
+        let allNotes = res.docs.map(doc => {
+          const data = doc.data()
+          const createdAt: Timestamp = data['createdAt'];
+          const lastUpdate: Timestamp = data['lastUpdate'];
+          return { ...doc.data() as Note, id: doc.id, createdAt: createdAt.toDate(), lastUpdate: lastUpdate.toDate() };
+        })
+        const noteInTrash = allNotes.filter(n => n.enable == false)
+        allNotes = allNotes.filter(n => n.enable == true)
+        this.state.dispatch(actions.addAllNotes({ notes: allNotes }))
+        this.state.dispatch(actions.addAllTrash({ trash: noteInTrash }))
+        this.isLoading = false
       })
   }
 
   async getAllNotes(): Promise<NoteForUI[]> {
     const res = await this.firebaseService.getAllNotesByUserId(localStorage.getItem("userId") + "");
     this.isLoading = false;
-    console.log(res.docs);
     if (res.docs.length == 0) {
-      this.emptyMessage = "You have no note!";
       return [];
     } else {
       let allNotes = res.docs.map(doc => {

@@ -6,7 +6,7 @@ import { NoteService } from 'src/app/services/note.service';
 import { Store, select } from '@ngrx/store';
 import { State } from 'src/app/state/state';
 import * as actions from "../../state/actions/NoteActions"
-import { selectAllNotes } from 'src/app/state/reducers/NoteReducer';
+import { selectAllNotes, selectNoteEmptyMessage } from 'src/app/state/reducers/NoteReducer';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -30,6 +30,9 @@ export class HomeComponent {
     this.state.select(selectAllNotes).subscribe(n => {
       this.isLoading = this.noteService.isLoading
       this.notes = n;
+    })
+    this.state.select(selectNoteEmptyMessage).subscribe(m => {
+      this.emptyMessage = m;
     })
 
     this.message = this.timeService.getTimeMessage() + ' ' + localStorage.getItem("keepNotesUserName")

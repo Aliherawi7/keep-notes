@@ -4,7 +4,7 @@ import { FirebaseService } from 'src/app/services/firebase.service';
 import { Timestamp } from 'firebase/firestore';
 import { Store } from '@ngrx/store';
 import { State } from 'src/app/state/state';
-import { selectAllTrash } from 'src/app/state/reducers/NoteReducer';
+import { selectAllTrash, selectTrashEmptyMessage } from 'src/app/state/reducers/NoteReducer';
 import { NoteService } from 'src/app/services/note.service';
 
 @Component({
@@ -27,6 +27,11 @@ export class TrashComponent {
       this.isLoading = this.noteService.isLoading;
       this.allNotes = t;
     })
+
+    this.state.select(selectTrashEmptyMessage).subscribe(m => {
+      this.emptyMessage = m;
+    })
   }
+
 
 }

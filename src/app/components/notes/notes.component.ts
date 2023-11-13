@@ -5,7 +5,7 @@ import { Timestamp } from 'firebase/firestore';
 import { NoteService } from 'src/app/services/note.service';
 import { State } from 'src/app/state/state';
 import { Store } from '@ngrx/store';
-import { selectAllNotes } from 'src/app/state/reducers/NoteReducer';
+import { selectAllNotes, selectNoteEmptyMessage } from 'src/app/state/reducers/NoteReducer';
 
 
 @Component({
@@ -29,6 +29,9 @@ export class NotesComponent {
     this.state.select(selectAllNotes).subscribe(n => {
       this.isLoading = this.noteService.isLoading;
       this.allNotes = n;
+    })
+    this.state.select(selectNoteEmptyMessage).subscribe(m => {
+      this.emptyMessage = m;
     })
   }
 

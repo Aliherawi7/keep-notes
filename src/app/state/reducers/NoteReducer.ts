@@ -11,18 +11,33 @@ export const appReducer = createReducer(
     on(actions.addNote, (state, note: NoteForUI) => {
         return { ...state, notes: [...state.notes, note] }
     }),
-    on(actions.addAllNotes, (state, { notes }) => ({ ...state, notes: notes })),
-    on(actions.addAllTrash, (state, { trash }) => ({ ...state, trash: trash })),
+    on(actions.addAllNotes, (state, { notes }) => {
+        if (notes.length > 0) {
+            return { ...state, notes: notes, notesEmptyMessage: '' }
+        }
+        return { ...state, notes: notes, notesEmptyMessage: 'You have no note' };
+    }),
+    on(actions.addAllTrash, (state, { trash }) => {
+        if (trash.length > 0) {
+            return { ...state, trash: trash, trashEmptyMessage: '' };
+        }
+        return { ...state, trash: trash, trashEmptyMessage: 'Trash is empty' };
+    }),
     on(actions.moveFromTrash, (state, { noteId }) => {
         const index = state.trash.findIndex(t => t.id == noteId)
         if (index >= 0) {
             const note = { ...state.trash[index], enable: true };
             const newTrash = [...state.trash.slice(0, index), ...state.trash.slice(index + 1)];
             const newNotes = [...state.notes, note]
-            return { ...state, notes: newNotes, trash: newTrash }
+            return {
+                ...state,
+                notes: newNotes,
+                trash: newTrash,
+                notesEmptyMessage: newNotes.length == 0 ? 'You have no note' : '',
+                trashEmptyMessage: newTrash.length == 0 ? 'Trash is empty' : '',
+            }
         }
         return state;
-
     }),
     on(actions.moveToTrash, (state, { noteId }) => {
         const index = state.notes.findIndex(t => t.id == noteId)
@@ -30,16 +45,21 @@ export const appReducer = createReducer(
             const note = { ...state.notes[index], enable: false };
             const newNotes = [...state.notes.slice(0, index), ...state.notes.slice(index + 1)];
             const newTrash = [...state.trash, note]
-            return { ...state, notes: newNotes, trash: newTrash }
+            return {
+                ...state,
+                notes: newNotes,
+                trash: newTrash,
+                notesEmptyMessage: newNotes.length == 0 ? 'You have no note' : '',
+                trashEmptyMessage: newTrash.length == 0 ? 'Trash is empty' : '',
+            }
         }
         return state;
-
     }),
     on(actions.deleteNote, (state, { noteId }) => {
         const index = state.trash.findIndex(t => t.id == noteId)
         if (index >= 0) {
             const newTrash = [...state.trash.slice(0, index), ...state.trash.slice(index + 1)];
-            return { ...state, trash: newTrash }
+            return { ...state, trash: newTrash, trashEmptyMessage: newTrash.length == 0 ? 'Trash is empty' : '' }
         }
         return state;
 
@@ -55,6 +75,12 @@ export const selectAllNotes = (state: State) => {
 }
 export const selectAllTrash = (state: State) => {
     return (Object.values(state)[0].trash);
+}
+export const selectNoteEmptyMessage = (state: State) => {
+    return (Object.values(state)[0].notesEmptyMessage);
+}
+export const selectTrashEmptyMessage = (state: State) => {
+    return (Object.values(state)[0].trashEmptyMessage);
 }
 
 
