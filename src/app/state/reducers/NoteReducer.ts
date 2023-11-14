@@ -13,7 +13,8 @@ export const appReducer = createReducer(
         return { ...state, notes: [...state.notes, note], notesEmptyMessage: '' }
     }),
     on(actions.updateNote, (state, note: NoteForUI) => {
-        const index = state.notes.findIndex(n => n.id = note.id);
+        const index = state.notes.findIndex(n => n.id == note.id);
+        console.log(index)
         if (index >= 0) {
             const newNotes = [...state.notes.slice(0, index), ...state.notes.slice(index + 1)];
             newNotes.push(note)

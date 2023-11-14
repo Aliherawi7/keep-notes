@@ -78,10 +78,8 @@ export class NoteService {
       })
   }
   async updateNote(note: NoteForUI) {
+    this.state.dispatch(actions.updateNote(note))
     return this.firebaseService.updateNote(note)
-      .then(res => {
-        return this.state.dispatch(actions.updateNote(note))
-      })
   }
   moveToTrash(noteId: string) {
     this.firebaseService.moveNoteInTrash(this.notes[this.findNoteIndexById(this.notes, noteId)])
