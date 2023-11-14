@@ -30,6 +30,7 @@ export class HomeComponent {
     this.state.select(selectAllNotes).subscribe(n => {
       this.isLoading = this.noteService.isLoading
       this.notes = n;
+      console.log(n)
     })
     this.state.select(selectNoteEmptyMessage).subscribe(m => {
       this.emptyMessage = m;

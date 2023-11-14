@@ -9,7 +9,8 @@ import { NoteForUI } from 'src/app/types/Note';
 export const appReducer = createReducer(
     initialState,
     on(actions.addNote, (state, note: NoteForUI) => {
-        return { ...state, notes: [...state.notes, note] }
+
+        return { ...state, notes: [...state.notes, note], notesEmptyMessage: '' }
     }),
     on(actions.updateNote, (state, note: NoteForUI) => {
         const index = state.notes.findIndex(n => n.id = note.id);

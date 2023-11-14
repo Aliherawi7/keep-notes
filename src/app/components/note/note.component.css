@@ -1,8 +1,7 @@
 .note {
     min-width: 200px;
     max-width: 500px;
-    min-height: 250px;
-    max-height: 400px;
+    height: 300px;
     margin: 8px;
     position: relative;
     overflow: hidden;
