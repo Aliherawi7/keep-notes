@@ -39,6 +39,7 @@ export class LoginComponent {
         localStorage.setItem("accessToken", res.user.refreshToken)
         localStorage.setItem("refreshToken", res.user.refreshToken)
         localStorage.setItem("userId", res.user.uid);
+        console.log(res)
         this.firebaseService.getUserInfo(res.user.uid)
           .then(r => {
             const user: User = r.docs[0].data() as User
@@ -70,6 +71,7 @@ export class LoginComponent {
         console.log(res)
         this.isLoadingGoogle = false;
         this.authService.setLoggedIn(true)
+        console.log('google username', res.user.displayName)
         localStorage.setItem('keepNotesUserName', res.user.displayName as string)
         localStorage.setItem("userId", res.user.uid);
         const user: User = {

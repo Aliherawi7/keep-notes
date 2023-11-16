@@ -10,6 +10,9 @@ import { LoginComponent } from './components/authentication/login/login.componen
 import { SignupComponent } from './components/authentication/signup/signup.component';
 import { authGuard } from './auth/auth.guard';
 import { TrashComponent } from './components/trash/trash.component';
+import { SettingsComponent } from './components/settings/settings.component';
+import { ArchivesComponent } from './components/archives/archives.component';
+import { RemindersComponent } from './components/reminders/reminders.component';
 
 const routes: Routes = [
   {
@@ -40,9 +43,30 @@ const routes: Routes = [
     canActivate: [authGuard]
   },
   {
+    path: Paths.archives,
+    title: "Trash",
+    component: ArchivesComponent,
+    pathMatch: "full",
+    canActivate: [authGuard]
+  },
+  {
+    path: Paths.reminders,
+    title: "Trash",
+    component: RemindersComponent,
+    pathMatch: "full",
+    canActivate: [authGuard]
+  },
+  {
     path: Paths.trash,
     title: "Trash",
     component: TrashComponent,
+    pathMatch: "full",
+    canActivate: [authGuard]
+  },
+  {
+    path: Paths.settings,
+    title: "settings",
+    component: SettingsComponent,
     pathMatch: "full",
     canActivate: [authGuard]
   },

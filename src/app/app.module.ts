@@ -25,6 +25,9 @@ import { ModalComponent } from './components/UI/modal/modal.component';
 import { FullScreenLoadingComponent } from './components/UI/full-screen-loading/full-screen-loading.component';
 import { StoreModule } from '@ngrx/store';
 import { appReducer } from './state/reducers/NoteReducer';
+import { SettingsComponent } from './components/settings/settings.component';
+import { RemindersComponent } from './components/reminders/reminders.component';
+import { ArchivesComponent } from './components/archives/archives.component';
 
 
 
@@ -48,6 +51,9 @@ import { appReducer } from './state/reducers/NoteReducer';
     TrashComponent,
     ModalComponent,
     FullScreenLoadingComponent,
+    SettingsComponent,
+    RemindersComponent,
+    ArchivesComponent,
   ],
   imports: [
     BrowserModule,

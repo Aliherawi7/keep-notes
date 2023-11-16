@@ -127,6 +127,7 @@ textarea {
 .ck-content {
     padding-left: 20px !important;
     padding-right: 20px !important;
+    min-height: 200px;
 }
 
 .note_editor_container .ck-editor__editable {
@@ -136,5 +137,16 @@ textarea {
 
 .input_error_message {
     color: #de4313;
+}
 
+.title_page_header {
+    padding: 5px 20px;
+    display: flex;
+    font-size: 1.5rem;
+    font-weight: 900;
+    justify-content: space-between;
+    background: #ebebeb8a;
+    border-radius: 5px;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
 }
