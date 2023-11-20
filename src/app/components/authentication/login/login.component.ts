@@ -42,10 +42,14 @@ export class LoginComponent {
         console.log(res)
         this.firebaseService.getUserInfo(res.user.uid)
           .then(r => {
+            console.log(r)
             const user: User = r.docs[0].data() as User
             localStorage.setItem("keepNotesUserName", user.name as string)
             localStorage.setItem('keepNotesLastName', user.lastName as string)
             this.router.navigate(['/']);
+          })
+          .catch(error => {
+            console.log(error)
           })
         this.authService.setLoggedIn(true)
 

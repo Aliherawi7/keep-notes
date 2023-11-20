@@ -51,14 +51,10 @@ export class NoteEditorComponent {
     private noteService: NoteService) {
     var url = router.url.split('/');
     var pathVar: string = url[url.length - 1]
-    var userId: string = localStorage.getItem('userId') || '';
-    console.log(pathVar)
-    console.log(userId)
     if (this.router.url.includes('/edit-note')) {
       this.isLoading = true;
       this.firebaseService.getNoteByNoteId(pathVar)
         .then(res => {
-          console.log(res)
           const resData = res.data() as Note
           this.color = resData.color;
           this.data = resData.data;
@@ -71,7 +67,6 @@ export class NoteEditorComponent {
 
   public onChange({ editor }: ChangeEvent) {
     this.data = editor.data.get()
-    console.log(this.data)
   }
 
   save() {

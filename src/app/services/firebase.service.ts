@@ -102,6 +102,12 @@ export class FirebaseService {
 
   }
 
+  getUserInfoByEmail(email: string) {
+    const q = query(this.userCollectionRef, where("email", "==", email));
+    return getDocs(q);
+  }
+
+
 
 
 

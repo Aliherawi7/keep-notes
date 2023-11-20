@@ -11,6 +11,8 @@
     position: fixed;
     left: 0;
     bottom: 0;
+    justify-content: space-between;
+    padding-bottom: 20px;
 }
 
 .sidebar_container nav .brand_name {
@@ -32,6 +34,7 @@
 nav ul {
     width: 100%;
     margin-top: 30px;
+    border-bottom: 2px solid #ffffff8c;
 }
 
 .sidebar_container ul li {
@@ -65,4 +68,31 @@ ul .active {
     border-left: 5px solid #fdbb4f !important;
     color: #fdbb4f !important;
     background-color: #ffffff;
+}
+
+
+.profile {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #fff;
+    user-select: none;
+}
+
+.profile .profile_image {
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+#logout {
+    border: none;
+    background: transparent;
+    color: #fff;
+    font-size: 12px;
 }

@@ -25,8 +25,10 @@ export class NoteComponent {
 
   ngOnInit() {
     this.isLoading = true;
-    this.formattedDate = this.lastUpdate?.toUTCString()
-    console.log(this.id)
+    // Get the user's timezone
+    const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    // Convert the GMT time to the user's timezone
+    this.formattedDate = this.lastUpdate.toLocaleString('en-US', { timeZone: userTimezone });
   }
 
 

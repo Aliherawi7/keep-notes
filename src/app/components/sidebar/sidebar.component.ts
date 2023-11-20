@@ -12,6 +12,7 @@ export class SidebarComponent {
   route?: Router;
   number?: number;
   activePath?: string;
+  displayName: string = '';
 
   constructor(private router: Router, private firebaseService: FirebaseService) {
     let path = window.location.pathname;
@@ -32,6 +33,7 @@ export class SidebarComponent {
         this.activePath = event.url;
       }
     });
+    this.displayName = localStorage.getItem('keepNotesUserName') || ''
   }
 
   logout() {

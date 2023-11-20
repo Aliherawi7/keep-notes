@@ -19,6 +19,14 @@
                 <i class="bi bi-gear-fill"></i>Settings
             </li>
         </ul>
-        <app-button (btnClick)="logout()" [text]="'Logout'"></app-button>
+
+        <div class="profile">
+            <img class="profile_image" src="../../../assets/images/avatar.jpg" />
+            <p>{{displayName}}</p>
+            <button class="btn " id="logout" (click)="logout()">Logout</button>
+        </div>
+
     </nav>
+
+
 </div>

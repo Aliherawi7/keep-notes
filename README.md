@@ -2,6 +2,17 @@ Introduction to Keep Notes:
 
 Keep Notes is a simple note-taking application developed using Angular. Inspired by Google Keep, this application provides a clean and intuitive interface for users to create and manage their notes effectively. With features like real-time updates and easy customization, Keep Notes offers a seamless note-taking experience.
 
+
+## deployed linked: [click here](https://aliherawi7.github.io/keep-notes/)
+
+
+## Home page
+![Home page](screenshots/home.png)
+## profile page
+![notes page](screenshots/notes.png)
+
+
+
 Key Features:
 
 Create and Edit Notes: Users can easily create new notes, add titles, and write content. The application provides a rich text editor for formatting text, adding bullet points, and more.

@@ -1,85 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keep Notes</title>
+    <title>Keep Notes App</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
         .container {
-            max-width: 800px;
+            max-width: 600px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 40px;
+            text-align: center;
         }
 
         h1 {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .note-list {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .note-item {
-            background-color: #f5f5f5;
-            padding: 20px;
+            font-size: 28px;
             margin-bottom: 20px;
         }
 
-        .note-item h2 {
-            margin-top: 0;
+        p {
+            font-size: 16px;
             margin-bottom: 10px;
         }
 
-        .note-item p {
-            margin: 0;
-        }
-
-        .add-note-button {
-            display: block;
-            width: 100%;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            padding: 10px;
-            text-align: center;
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
             text-decoration: none;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
+            border-radius: 4px;
+            font-size: 16px;
         }
 
-        .add-note-button:hover {
-            background-color: #0056b3;
+        .button:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <h1>Keep Notes</h1>
-        <ul class="note-list">
-            <li class="note-item">
-                <h2>Note 1</h2>
-                <p>This is the content of note 1.</p>
-            </li>
-            <li class="note-item">
-                <h2>Note 2</h2>
-                <p>This is the content of note 2.</p>
-            </li>
-            <li class="note-item">
-                <h2>Note 3</h2>
-                <p>This is the content of note 3.</p>
-            </li>
-        </ul>
-        <a href="#" class="add-note-button">Add Note</a>
+        <h1>Welcome to Keep Notes App</h1>
+        <p>A simple note-taking application developed using Angular.</p>
+        <p>Inspired by Google Keep, this application provides a clean and intuitive interface for users to create and
+            manage their notes effectively.</p>
+        <p>With features like real-time updates and easy customization, Keep Notes offers a seamless note-taking
+            experience.</p>
+        <a href="login.html" class="button">Go to Login</a>
     </div>
 </body>
 
